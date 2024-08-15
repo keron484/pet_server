@@ -94,21 +94,27 @@ class Petcontroller extends Controller
                   return response()->json(['message' => 'Pet updated successfully'], 200);
      }
 
-     public function search(Request $request){
-         $searchQuery = $request->input('search');
-         if (!empty($searchQuery)) {
-             $products = Pet::where('name', 'LIKE', "%$searchQuery%")
-                 ->orWhere('description', 'LIKE', "%$searchQuery%")
-                 ->orWhere('breed', 'LIKE', "%$searchQuery%")
-                 ->orWhere('species', 'LIKE', "%$searchQuery%")
-                 ->orWhere('sex', 'LIKE', "%$searchQuery%")
-                 ->get();
-         } else {
-             $products = Pet::all();
-         }
-     
-         return response()->json($products);
-     }
+     public function search(Request $request) {
+        $request->validate([
+            'search' => 'nullable|string|max:255'
+        ]);
+    
+        $searchQuery = $request->input('search');
+        $query = Pet::query();
+    
+        if (!empty($searchQuery)) {
+            $query->where(function ($query) use ($searchQuery) {
+                $query->where('name', 'LIKE', "%$searchQuery%")
+                    ->orWhere('description', 'LIKE', "%$searchQuery%")
+                    ->orWhere('breed', 'LIKE', "%$searchQuery%")
+                    ->orWhere('species', 'LIKE', "%$searchQuery%")
+                    ->orWhere('sex', 'LIKE', "%$searchQuery%");
+            });
+        }
+        $products = $query->orderBy('created_at', 'desc')->paginate(10);
+    
+        return response()->json($products);
+    }
      public function getallwithcategories(Request $request)
      {
    
@@ -146,10 +152,12 @@ class Petcontroller extends Controller
              'pets' => $pets,
          ];
      
-         return response()->json($petList);
-     }
+        }
+        return response()->json(['pet_category' => $petList], 200);
  
 }
+
+
 
 public function getallpetswithcategory(Request $request){
     $pets_category = Pet::with('category')->get();

@@ -8,7 +8,8 @@ use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\Welcomemail;
 class registerUsercontroller extends Controller
 {
               /**
@@ -16,12 +17,12 @@ class registerUsercontroller extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function createadmin(Request $request)
+    public function createuser(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
@@ -29,9 +30,11 @@ class registerUsercontroller extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-
+       
         event(new Registered($user));
+        Mail::to($request->email)->send( new Welcomemail($request->name));
+        
 
-        return response()->json(['message' => 'Admin created succesfuly'], 200);
+        return response()->json(['message' => 'User created succesfully'], 200);
     }
 }

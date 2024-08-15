@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Models\Petcategory;
 class Pet extends Model
 {
@@ -43,5 +44,14 @@ class Pet extends Model
     {
         return $this->belongsTo(Petcategory::class, 'petcategory_id');
     }
+
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class);
+    }
+
  
 }
+//c603e16aff
+//edf314feed

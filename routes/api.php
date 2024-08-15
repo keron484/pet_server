@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\Adoptioncontroller;
+use App\Http\Controllers\Applicationcontroller;
 use App\Http\Controllers\Auth\Admin\createadmincontroller;
 use App\Http\Controllers\Auth\Admin\loginadmincontroller;
 use App\Http\Controllers\Auth\Admin\logoutadmincontroller;
@@ -10,23 +11,21 @@ use App\Http\Controllers\Auth\User\logoutusercontroller;
 use App\Http\Controllers\Auth\User\registerUsercontroller;
 use App\Http\Controllers\messageController;
 use App\Http\Controllers\sendemailController;
-use App\Http\Controllers\packageController;
 use App\Http\Controllers\Petcategorycontroller;
 use App\Http\Controllers\Petcontroller;
 use App\Http\Controllers\userController;
-use App\Models\Petcategory;
 use Illuminate\Support\Facades\Route;
 
 
 //authentication routes
 Route::post('/create-admin', [createadmincontroller::class, 'createadmin']);
 Route::post('/login-admin', [loginadmincontroller::class, 'loginadmin']);
-Route::post('/logout-admin', [logoutadmincontroller::class, 'logoutAdmin']);
+Route::middleware('auth:sanctum')->post('/logout-admin', [logoutadmincontroller::class, 'logoutAdmin']);
 Route::middleware('auth:sanctum')->get('/admin', [adminController::class, 'getauthAdmin']);
 
 Route::post('/login-user', [loginuserController::class, 'loginuser']);
-Route::post('/logout-user', [logoutusercontroller::class, 'logoutuser']);
-Route::post('/create-user', [registerUsercontroller::class, 'createadmin']);
+Route::middleware('auth:sanctum')->post('/logout-user', [logoutusercontroller::class, 'logoutuser']);
+Route::post('/create-user', [registerUsercontroller::class, 'createuser']);
 Route::middleware('auth:sanctum')->get('/user', [userController::class, 'getAtuthuser']);
 
 Route::group([], function(){
@@ -73,3 +72,14 @@ Route::group([], function(){
      Route::delete('/delete-message/{id}', [messageController::class, 'deleteMessage']);
      Route::post('/send-message', [messageController::class, 'sendMessage']);
 });
+
+
+Route::group([],  function(){
+    Route::get('/applications', [Applicationcontroller::class, 'getallApplication']);
+    Route::post('/apply', [Applicationcontroller::class, 'createApplication']);
+    Route::delete('/delete-applicaiton/{id}', [Applicationcontroller::class, 'deleteApplication']);
+    Route::put('/update-application/{id}', [Applicationcontroller::class, 'updateapplication']);
+    Route::get('/my-applications/{id}', [Applicationcontroller::class, 'getUserApplications']);
+});
+
+

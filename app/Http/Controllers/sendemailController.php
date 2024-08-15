@@ -25,12 +25,12 @@ class sendemailController extends Controller
      $email->text = $request->text;
      $email->name = $request->name;
 
-    // $user_email = $request->input('email');
-     //$title = $request->input('title');
-     //$text = $request->input('text');
-     //$name = $request->input('name');
+     $user_email = $request->input('email');
+     $title = $request->input('title');
+     $text = $request->input('text');
+     $name = $request->input('name');
 
-    //Mail::to($user_email)->send( new Messagemail( $title, $text, $name));
+    Mail::to($user_email)->send( new Messagemail( $title, $text, $name));
 
      $email->save();
 
