@@ -17,7 +17,7 @@
            font-family: 'poppins', sans-serif;  
         } 
         .main-box{
-            height: 100dvh;
+            height: 70dvh;
             width: 100%;
             background-color: #fbfbab;
         }
@@ -45,41 +45,27 @@
     border: none;
     background-color: #fea3a3;
 }
+.letter-spacing-3{
+    letter-spacing: 0.5rem;
+    font-size: 4rem;
+}
     </style>
     <div class="container">
        <div class="main-box px-2 pt-3 mt-2 d-flex flex-column mb-5 pb-2 rounded-2">
         <div class="d-flex flex-row justify-content-between">
-            <p>
-                Every pet deserves a loving home. Meet your new best friend today 🐾🐾!
-            </p>
         </div>
         <div class="d-flex flex-row justify-content-center">
              <img src={{ asset('/logo/logo.png') }} alt="" class="object-fit-contain w-50">
         </div>
         <div class="mt-5">
-            <h2 class="fw-bold">Welcome</h2>
-            <p class="fs-6">
-               Hi {{ $name }} , welcome to our community of pet lovers! Here,
-               you can browse adorable pets seeking forever homes, connect with 
-               fellow enthusiasts for support, and access expert tips on pet care.
-               If you need assistance, just reply to this email. Thank you for joining 
-               us in giving every pet the loving home they deserve!
-            </p>
+            <h1 class="fw-bold text-center">OTP CODE</h1>
+            <P class="text-center">Do not share with anyone</P>
         </div>
-        <div class="last-container px-2 w-100 bg-dark pt-2 h-25">
-            <h5 class="text-center">Your Account Information</h5>
+        <div class="last-container px-2 w-100 bg-dark pt-2 h-25 ">
           <div class="d-flex flex-row mt-3 justify-content-center">
-                <div class="w-100 text-center" style="font-size: 0.9rem;">
-                    <p>
-                        <span>Email: {{$email}}</span>
-                    </p>
-                    <p>
-                        <span>username: {{$name}}</span>
-                    </p>
-                    <p>
-                        <span>Password: {{$password}}</span>
-                    </p>
-                </div>
+               <h1 class="letter-spacing-3">
+                {{ $otp }}
+               </h1>
             </div>
         </div>
         <div>

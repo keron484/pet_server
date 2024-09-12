@@ -22,6 +22,8 @@ class Pet extends Model
         'pet_image',
         'adoption_status',
         'petcategory_id',
+        'number_of_appication',
+        'number_of_interested_persons',
         'price',
     ];
 
@@ -53,5 +55,3 @@ class Pet extends Model
 
  
 }
-//c603e16aff
-//edf314feed

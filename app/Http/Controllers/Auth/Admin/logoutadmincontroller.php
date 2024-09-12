@@ -10,7 +10,7 @@ class logoutadmincontroller extends Controller
 {
     public function logoutAdmin(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $request->admin()->currentAccessToken()->delete();
 
         return response()->noContent();
     }

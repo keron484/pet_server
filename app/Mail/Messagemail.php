@@ -43,7 +43,6 @@ class Messagemail extends Mailable
         return new Content(
             view: 'emails.message',
             with:[
-                'title' => $this->title,
                 'text' => $this->text,
                 'name' => $this->name
             ]

@@ -1,127 +1,81 @@
-<style>
-body{
-    padding: 0;
-    margin: 0;
-}
-.container{
-    height: 100dvh;
-    width: 100dvw;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: row;
-    place-items: center;
-    justify-content: center;
-    align-items: center;
-}
-.message-box{
-    width: 85%;
-    border-radius: 20px;
-    background-color: #fff;
-    height: auto;
-    max-height: 100dvh;
-    box-sizing: border-box;
-    padding: 10px;
-}
-.logo{
-    width: 100px;
-    height: 70px;
-}
-.logo-box{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-}
-h1{
-    font-size: 1.5rem;
-    font-weight: 900;
-    text-align: center;
-}
-.title-box{
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-}
-p{
-    font-size: 1.2rem;
-}
-.w-100{
-    border-bottom: .5px solid #ccc;
-    width: 100%;
-    padding-bottom: 1rem;
-}
-.user-text{
-    font-size: 1.1rem;
-    font-weight: 900;
-}
-.mdi--hand-wave {
-    display: inline-block;
-    width: 1em;
-    height: 1em;
-    --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23000' d='M23 17c0 3.31-2.69 6-6 6v-1.5c2.5 0 4.5-2 4.5-4.5zM1 7c0-3.31 2.69-6 6-6v1.5c-2.5 0-4.5 2-4.5 4.5zm7-2.68l-4.59 4.6c-3.22 3.22-3.22 8.45 0 11.67s8.45 3.22 11.67 0l7.07-7.09c.49-.47.49-1.26 0-1.75a1.25 1.25 0 0 0-1.77 0l-4.42 4.42l-.71-.71l6.54-6.54c.49-.49.49-1.28 0-1.77s-1.29-.49-1.79 0L14.19 13l-.69-.73l6.87-6.89c.49-.49.49-1.28 0-1.77s-1.28-.49-1.77 0l-6.89 6.89l-.71-.7l5.5-5.48c.5-.49.5-1.28 0-1.77s-1.28-.49-1.77 0l-7.62 7.62a4 4 0 0 1-.33 5.28l-.71-.71a3 3 0 0 0 0-4.24l-.35-.35l4.07-4.07c.49-.49.49-1.28 0-1.77c-.5-.48-1.29-.48-1.79.01'/%3E%3C/svg%3E");
-    background-color: orange;
-    -webkit-mask-image: var(--svg);
-    mask-image: var(--svg);
-    -webkit-mask-repeat: no-repeat;
-    mask-repeat: no-repeat;
-    -webkit-mask-size: 100% 100%;
-    mask-size: 100% 100%;
-  }
-  .btn-success{
-    width: 90%;
-    border-radius: 5px;
-    padding: 0.8rem;
-    margin-top: 0.6rem;
-    border: none;
-    font-size: 15px;
-    font-weight: 500;
-    background-color: steelblue;
-    color: #fafafa;
-  }
-  .text-center{
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 10px;
-    margin-top: 1.5rem;
-  }
-  .word-center{
-    text-align: center;
-    font-size: 10px;
-  }
-  .d-block{
-    display: block;
-  }
-
-</style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+     crossorigin="anonymous">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
 <body>
-    <body>
-        <div class="container">
-         <div class="message-box">
-            <div class="logo-box">
-                <img src="./logo/logo.png" alt="" class="logo">
-            </div>
-            <h1>{{ $title }}</h1>
-            <div class="title-box">
-                <img src="" alt="">
-                <p class="user-text">Hello, {{ $name }}! <span class="mdi--hand-wave"></span></p>
-            </div>
-            <div class="message-body">
-                {{ $text }}
-            </div>
-            <div class="w-100">
-                <button class="btn-success">Click Here to complete transaction</button>
-            </div>
-            <div class="text-center">
-                <div class="d-block">
-                    <p class="word-center">@2024 Get high. All rights Reserved</p>
-                <p class="word-center">Gethigh.com</p>
-                <p class="word-center">394-843-232-999</p>
-                </div>
-            </div>
-         </div>
+    <style>
+        body{
+           font-family: 'poppins', sans-serif;  
+        } 
+        .main-box{
+            height: 100dvh;
+            width: 100%;
+            background-color: #fbfbab;
+        }
+        .last-container{
+            color: #fbfbab;
+        }
+        .why-container{
+            background-color: #f34040;
+            font-size: 0.7rem;
+        }
+        .clarity--email-solid {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  --svg: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 36 36'%3E%3Cpath fill='%23000' d='M32.33 6a2 2 0 0 0-.41 0h-28a2 2 0 0 0-.53.08l14.45 14.39Z' class='clr-i-solid clr-i-solid-path-1'/%3E%3Cpath fill='%23000' d='m33.81 7.39l-14.56 14.5a2 2 0 0 1-2.82 0L2 7.5a2 2 0 0 0-.07.5v20a2 2 0 0 0 2 2h28a2 2 0 0 0 2-2V8a2 2 0 0 0-.12-.61M5.3 28H3.91v-1.43l7.27-7.21l1.41 1.41Zm26.61 0h-1.4l-7.29-7.23l1.41-1.41l7.27 7.21Z' class='clr-i-solid clr-i-solid-path-2'/%3E%3Cpath fill='none' d='M0 0h36v36H0z'/%3E%3C/svg%3E");
+  background-color: currentColor;
+  -webkit-mask-image: var(--svg);
+  mask-image: var(--svg);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+}
+.action-button{
+    border: none;
+    background-color: #fea3a3;
+}
+.letter-spacing-3{
+    letter-spacing: 0.5rem;
+    font-size: 4rem;
+}
+    </style>
+    <div class="container">
+       <div class="main-box px-2 pt-3 mt-2 d-flex flex-column mb-5 pb-2 rounded-2">
+        <div class="d-flex flex-row justify-content-between">
         </div>
-    </body>
+        <div class="d-flex flex-row justify-content-center">
+             <img src={{ asset('/logo/logo.png') }} alt="" class="object-fit-contain w-50">
+        </div>
+        <div class="mt-5">
+            <h1 class="fw-bold  text-start">Hello {{ $name}}</h1>
+        </div>
+        <div>
+            <p>
+                {{ $text }}
+            </p>
+        </div>
+        <div>
+        </div>
+        <div class="why-container mt-auto px-2 py-2 bg-dark last-container">
+              <p class="text-center">
+                You recieved this email because you are a member on <a href="htts://Petpalsadoption.com">
+                    Petpalsadoption.com
+              </p> 
+            </a>
+            <p class="text-center" style="font-size: 12px;">@2024 Petpalsadoption. All rights Reserved</p>
+        </div>
+       </div>
+    </div>
 </body>
+</html>

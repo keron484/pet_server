@@ -3,13 +3,17 @@
 use App\Http\Controllers\adminController;
 use App\Http\Controllers\Adoptioncontroller;
 use App\Http\Controllers\Applicationcontroller;
+use App\Http\Controllers\Auth\Admin\changepasswordController;
 use App\Http\Controllers\Auth\Admin\createadmincontroller;
 use App\Http\Controllers\Auth\Admin\loginadmincontroller;
 use App\Http\Controllers\Auth\Admin\logoutadmincontroller;
+use App\Http\Controllers\Auth\User\changepasswordController as UserChangepasswordController;
 use App\Http\Controllers\Auth\User\loginuserController;
 use App\Http\Controllers\Auth\User\logoutusercontroller;
 use App\Http\Controllers\Auth\User\registerUsercontroller;
+use App\Http\Controllers\Auth\User\resetPasswordController;
 use App\Http\Controllers\messageController;
+use App\Http\Controllers\passwordresetController;
 use App\Http\Controllers\sendemailController;
 use App\Http\Controllers\Petcategorycontroller;
 use App\Http\Controllers\Petcontroller;
@@ -22,11 +26,16 @@ Route::post('/create-admin', [createadmincontroller::class, 'createadmin']);
 Route::post('/login-admin', [loginadmincontroller::class, 'loginadmin']);
 Route::middleware('auth:sanctum')->post('/logout-admin', [logoutadmincontroller::class, 'logoutAdmin']);
 Route::middleware('auth:sanctum')->get('/admin', [adminController::class, 'getauthAdmin']);
+Route::middleware('auth:sanctum')->post('/change-password', [changepasswordController::class, 'change_admin_password']);
 
 Route::post('/login-user', [loginuserController::class, 'loginuser']);
-Route::middleware('auth:sanctum')->post('/logout-user', [logoutusercontroller::class, 'logoutuser']);
 Route::post('/create-user', [registerUsercontroller::class, 'createuser']);
+Route::middleware('auth:sanctum')->post('/logout-user', [logoutusercontroller::class, 'logoutuser']);
 Route::middleware('auth:sanctum')->get('/user', [userController::class, 'getAtuthuser']);
+Route::middleware('auth:sanctum')->post('/change-password/user', [UserChangepasswordController::class, 'change_user_password']);
+Route::middleware(['web'])->post('/reset-password', [resetPasswordController::class, 'reset_password']);
+Route::middleware(['web'])->post('/password-reset-otp', [passwordresetController::class, 'request_password_reset_otp']);
+Route::middleware(['web'])->post('/verify-otp', [passwordresetController::class, 'verify_otp']);
 
 Route::group([], function(){
     Route::get('/users', [userController::class, 'getallusers']);

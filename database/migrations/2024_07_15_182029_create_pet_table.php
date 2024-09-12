@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('pet_image');
             $table->string('adoption_status');
             $table->string('petcategory_id');
+            $table->string('number_of_interested_persons');
+            $table->string('number_of_appication');
             $table->decimal('price', 8,2);
             $table->foreign('petcategory_id')->references('id')->on('petcategory');
             $table->timestamps();

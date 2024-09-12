@@ -33,6 +33,8 @@ class Petcontroller extends Controller
           'price' => "required",
           'petcategory_id' => 'required|string',
           'description' => 'required',
+          'number_of_appication' => 'required|string',
+          'number_of_interested_persons' => 'required|string',
           'pet_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
           'adoption_status' => 'required|string'
         ]);
@@ -58,6 +60,8 @@ class Petcontroller extends Controller
         $pet->petcategory_id = $request->petcategory_id;
         $pet->adoption_status = $request->adoption_status;
         $pet->price = $request->price;
+        $pet->number_of_interested_persons = $request->number_of_interested_persons;
+        $pet->number_of_appication = $request->number_of_appication;
         $pet->pet_image = $imageName;
   
       $pet->save();

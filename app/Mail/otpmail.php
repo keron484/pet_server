@@ -9,21 +9,17 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class Welcomemail extends Mailable
+class otpmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public function __construct(
-        protected $name,
-        protected $email,
-        protected $password
-    )
+    public function __construct(protected $otp)
     {
         //
-      
+        
     }
 
     /**
@@ -32,7 +28,7 @@ class Welcomemail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Welcome To Petpals Adoption',
+            subject: 'password reset token',
         );
     }
 
@@ -42,11 +38,9 @@ class Welcomemail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.welcomemail',
+            view: 'emails.otp',
             with:[
-               'name' => $this->name,
-               'email' => $this->email,
-               'password' => $this->password
+                'otp' => $this->otp
             ]
         );
     }

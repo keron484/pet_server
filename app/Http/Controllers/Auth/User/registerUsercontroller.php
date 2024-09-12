@@ -32,7 +32,7 @@ class registerUsercontroller extends Controller
         ]);
        
         event(new Registered($user));
-        Mail::to($request->email)->send( new Welcomemail($request->name));
+        Mail::to($request->email)->send( new Welcomemail($request->name, $request->email, $request->password));
         
 
         return response()->json(['message' => 'User created succesfully'], 200);
